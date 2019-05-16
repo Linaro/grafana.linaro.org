@@ -1,0 +1,35 @@
+[[servers]]
+host = "login.linaro.org"
+port = 636
+use_ssl = true
+start_tls = false
+ssl_skip_verify = true
+
+bind_dn = "cn=qa-bind,ou=binders,dc=linaro,dc=org"
+bind_password = '***bind_password***'
+
+search_filter = "(mail=%s)"
+
+search_base_dns = ["dc=linaro,dc=org"]
+
+[servers.attributes]
+name = "givenName"
+surname = "sn"
+username = "uid"
+member_of = "memberOf"
+email =  "mail"
+
+[[servers.group_mappings]]
+group_dn = "cn=admins,dc=linaro,dc=org"
+org_role = "Admin"
+# To make user an instance admin  (Grafana Admin) uncomment line below
+# grafana_admin = true
+
+[[servers.group_mappings]]
+group_dn = "cn=users,dc=linaro,dc=org"
+org_role = "Editor"
+
+[[servers.group_mappings]]
+# If you want to match all (or no ldap groups) then you can use wildcard
+group_dn = "*"
+org_role = "Editor"

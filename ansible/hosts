@@ -1,0 +1,2 @@
+[webservers]
+grafana ansible_ssh_host=3.80.150.227 ansible_ssh_port=22 ansible_ssh_user=ubuntu
